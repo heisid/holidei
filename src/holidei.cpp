@@ -101,7 +101,7 @@ void loop() {
   display.print(currentTime);
 
   if (holidays.size() == 0) updateHolidays(currentYear);
-  if (closestHoliday.date.tm_year == 0) {
+  if (closestHoliday.date.tm_year == 0 || mktime(&tmo) >= mktime(&(closestHoliday.date))) {
     bool found = updateClosestHoliday(tmo);
     if (!found) {
       updateHolidays(currentYear + 1);
