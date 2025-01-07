@@ -172,8 +172,8 @@ void updateHolidays(int year) {
 bool updateClosestHoliday(struct tm referenceDate) {
   bool found = false;
   for (struct Holiday holiday : holidays) {
-    if (referenceDate.tm_mon > holiday.date.tm_mon) continue;
-    if (referenceDate.tm_mday > holiday.date.tm_mday) continue;
+    if (referenceDate.tm_year == holiday.date.tm_year && referenceDate.tm_mon > holiday.date.tm_mon) continue;
+    if (referenceDate.tm_year == holiday.date.tm_year && referenceDate.tm_mon == holiday.date.tm_mon && referenceDate.tm_mday > holiday.date.tm_mday) continue;
     closestHoliday.date.tm_year = holiday.date.tm_year;
     closestHoliday.date.tm_mon = holiday.date.tm_mon;
     closestHoliday.date.tm_mday = holiday.date.tm_mday;
